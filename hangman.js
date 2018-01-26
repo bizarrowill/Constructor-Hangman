@@ -29,35 +29,7 @@ inquirer.prompt([ /* Pass your questions in here */
     message: "Set a difficult password",
     name: "confirm",
     default: true
-  },
-  // Here we create a basic password-protected text prompt.
-  {
-    type: "list",
-    message: "Which band is your fav?",
-    choices: ["Rolling Stones", "N'Sync", "E-Street Band", "My Rockband Band"]
-    name: "bands"
-  },
-  {
-    type: "checkbox",
-    message: "Are you sure:",
-    name: "confirm",
-    default: true
-  },
-  {
-    type: "confirm",
-    message: "Are you sure:",
-    name: "confirm",
-    default: true
-  },
-
-},
-// Here we ask the user to confirm.
-{
-  type: "confirm",
-  message: "Are you sure:",
-  name: "confirm",
-  default: true
-}
+  }
 
 ])
 
