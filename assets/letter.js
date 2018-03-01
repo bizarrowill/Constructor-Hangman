@@ -1,26 +1,33 @@
-// constructor function used to create Letter objects
-function Letter(letter) {
-  this.letter = letter;
+// Letter constructor will display underscore or character for each letter in the word
 
-  // creates property to hide the letter
-  this.appear = false;
-
-  // method to show a blank, _ , or letter
-  this.letterRender = function() {
-    if(this.letter == ' '){
-      this.appear = true;
-      return '  ';
-      // if blank does not appear place an _ 
-    }if(this.appear === false){
-      return ' _ ';
-      // otherwise display the letter 
-    }else {
-      return this.letter;
-    }
-  }
-  
+function Letter(char) {
+  // If a character is not a number or a letter, make it appear from start
+  this.visible = !/[a-z1-9]/i.test(char);
+  // Save the underlying character
+  this.char = char;
 }
+// prototypes 
+// Returns underscore or the true character depending on `this.visible`
+//  because we call this function toString, when we call `this.letters.join`
+//  in Word.js, JavaScript automatically uses the value we return here
 
+Letter.prototype.toString = function() {
+  if (this.visible === true) {
+    return this.char;
+  }
+  return "_";
+};
+Letter.prototype.getSolution = function() {
+  return this.char;
+};
 
-// export to use in word.js
+// Accepts user guess
+Letter.prototype.guess = function(charGuess) {
+  if (charGuess.toUpperCase() === this.char.toUpperCase()) {
+    this.visible = true;
+    return true;
+  }
+  // Otherwise return false
+  return false;
+};
 module.exports = Letter;
